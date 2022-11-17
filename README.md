@@ -1,14 +1,12 @@
-# WorkDayScheduler
-
-In this assignment I was tasket with creating a scheduler for a busy employee.
-
-The goal of the project is to add the current day as a display element when you load the page; colors to the hours section depending on the actual hour.
-
-I also made it possible to save the date collected on local storage.
-
-![FinalProduct](./Assets/05-third-party-apis-homework-demo.gif)
+# Weather Dashboard
 
 
-Github Repo: https://github.com/Tonyoffor/WorkDayScheduler
-
-Deployed Page: https://tonyoffor.github.io/WorkDayScheduler/
+GIVEN a weather dashboard with form inputs
+WHEN I search for a city
+THEN I am presented with current and future conditions for that city and that city is added to the search history
+WHEN I view current weather conditions for that city
+THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the the wind speed
+WHEN I view future weather conditions for that city
+THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+WHEN I click on a city in the search history
+THEN I am again presented with current and future conditions for that city
