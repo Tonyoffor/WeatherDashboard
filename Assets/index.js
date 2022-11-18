@@ -1,12 +1,16 @@
-var APIKey = 'ae15a36edcdc75c39fec6b795ef5ca98';
-var searchbar = document.getElementById = 'searchbar';
-var city;
-var search_btn = document.getElementById = "search_btn"
+var apiKey = 'ae15a36edcdc75c39fec6b795ef5ca98';
+var searchbar = document.getElementById('searchbar');
+var cityName;
+var search_btn = document.getElementById("search_btn")
+
+
 
 
 function getApi(){
 
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}';
+  var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial" + "&appid=" + apiKey;
+  //var uvUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey
+   
 
     fetch(requestUrl)
     .then(function (response) {
