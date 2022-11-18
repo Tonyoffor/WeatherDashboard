@@ -10,7 +10,8 @@ function getApi(){
 
   var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial" + "&appid=" + apiKey;
   //var uvUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=" + apiKey
-   
+  console.log('https://api.openweathermap.org/data/2.5/weather?q=undefined&units=imperial&appid=ae15a36edcdc75c39fec6b795ef5ca98') 
+
 
     fetch(requestUrl)
     .then(function (response) {
