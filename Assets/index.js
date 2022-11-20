@@ -1,6 +1,8 @@
 var apiKey = 'ae15a36edcdc75c39fec6b795ef5ca98';
 var currentHumidity;
+var futureHumidity;
 var cityname;
+var futureWindspeed;
 var currentWindspeed;
 var currentDate;
 var search_btn = document.getElementById("search_btn");
@@ -38,6 +40,7 @@ function getApi(){
       
        var futureConditonBtn = document.createElement('button');
        futureConditonBtn.innerHTML = "future conditons ";
+       futureConditonBtn.onclick = displayfutureData;
        document.getElementById("display").appendChild(currentConditonBtn);
        document.getElementById("display").appendChild(futureConditonBtn);
     })};
@@ -61,19 +64,21 @@ function Historycal(ptag){
     return response.json();
   }).then(function (data) { 
     cityname = data.name;
-   
-    console.log("inside the function");
     currentHumidity = data.main.humidity;
     currentWindspeed = data.wind.speed;
    
     var futureConditonBtn = document.createElement('button');
     futureConditonBtn.innerHTML = "future conditons ";
+    futureConditonBtn.onclick = displayfutureData;
     document.getElementById("display").appendChild(currentConditonBtn);
        document.getElementById("display").appendChild(futureConditonBtn);
     
  })};
 
-
+function displayfutureData(){
+  currentDate = new Date();
+  document.getElementById("display").innerHTML+= "<br>"+ cityname + "<br>" + futureHumidity+ "<br>" + futureWindspeed +"<br>" + currentDate;
+};
  
 
     //currentDate = new Date();
