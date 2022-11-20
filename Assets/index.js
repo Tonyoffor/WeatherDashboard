@@ -5,6 +5,9 @@ var cityname;
 var futureWindspeed;
 var currentWindspeed;
 var currentDate;
+var currentConditon;
+var lat;
+var lon;
 var search_btn = document.getElementById("search_btn");
  document.getElementById("display").innerHTML =" ";
 
@@ -18,16 +21,15 @@ function getApi(){
   //console.log('https://api.openweathermap.org/data/2.5/weather?q=undefined&units=imperial&appid=ae15a36edcdc75c39fec6b795ef5ca98') 
   var searchbar = document.getElementById('searchbar').value;
   var requestUrl="https://api.openweathermap.org/data/2.5/weather?q="+ searchbar +"&appid=" +apiKey;
-  var futureConditonUrl= "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname +"&appid=" +apiKey;
-
+  
     fetch(requestUrl)
     .then(function (response) {
       return response.json();
     }).then(function (data) { 
-       var currentConditonBtn = document.createElement('button');
-       currentConditonBtn.innerHTML = "current conditions ";
+       var currentConditon = document.createElement('p');
+       currentConditon.innerHTML = "current conditions ";
        document.getElementById("display").innerHTML =" ";
-       currentConditonBtn.onclick = displayCurrentData;
+       currentConditon.onclick = displayCurrentData;
        cityname = data.name;
        var historyCity= document.createElement("p");
        historyCity.innerHTML=cityname;
@@ -38,13 +40,25 @@ function getApi(){
        document.getElementById("History").appendChild(historyCity);
        currentHumidity = data.main.humidity;
        currentWindspeed = data.wind.speed;
-      
-       var futureConditonBtn = document.createElement('button');
-       futureConditonBtn.innerHTML = "future conditons ";
-       futureConditonBtn.onclick = displayfutureData;
-       document.getElementById("display").appendChild(currentConditonBtn);
-       document.getElementById("display").appendChild(futureConditonBtn);
-    })};
+    })
+  document.getElementById("display").appendChild(currentConditon)
+
+    //fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + apiKey)
+      //          .then(function (response)  {
+        //            return response.json()
+        //      })
+          //      .then(function (data) { 
+                    
+  
+  
+
+   // var futureConditon = document.createElement('p');
+ //   futureConditon.innerHTML = "future conditons ";
+  //  futureConditon.onclick = displayfutureData;
+    //document.getElementById("display").appendChild(currentConditon);
+    //document.getElementById("display").appendChild(futureConditon);
+  
+  };
 
 function displayCurrentData(){
   currentDate = new Date();
