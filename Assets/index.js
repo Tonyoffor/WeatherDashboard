@@ -18,6 +18,7 @@ function getApi(){
   //console.log('https://api.openweathermap.org/data/2.5/weather?q=undefined&units=imperial&appid=ae15a36edcdc75c39fec6b795ef5ca98') 
   var searchbar = document.getElementById('searchbar').value;
   var requestUrl="https://api.openweathermap.org/data/2.5/weather?q="+ searchbar +"&appid=" +apiKey;
+  var futureConditonUrl= "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname +"&appid=" +apiKey;
 
     fetch(requestUrl)
     .then(function (response) {
@@ -49,6 +50,9 @@ function displayCurrentData(){
   currentDate = new Date();
   document.getElementById("display").innerHTML+= "<br>"+ cityname + "<br>" + currentHumidity+ "<br>" + currentWindspeed +"<br>" + currentDate;
 };
+
+
+//api.openweathermap.org/data/2.5/forecast?q= cityname &appid= apiKey
 
 function Historycal(ptag){
   
