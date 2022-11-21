@@ -27,8 +27,12 @@ function getApi(){
       return response.json();
     }).then(function (data) { 
        var currentConditon = document.createElement('p');
+       var futureConditon = document.createElement('p');
        currentConditon.innerHTML = "current conditions ";
+       futureConditon.innerHTML = "future conditions ";
        document.getElementById("display").innerHTML =" ";
+       document.getElementById("display").appendChild(currentConditon);
+       document.getElementById("display").appendChild(futureConditon);
        currentConditon.onclick = displayCurrentData;
        cityname = data.name;
        var historyCity= document.createElement("p");
@@ -41,13 +45,16 @@ function getApi(){
        currentHumidity = data.main.humidity;
        currentWindspeed = data.wind.speed;
     })
-  document.getElementById("display").appendChild(currentConditon)
-
-    //fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + apiKey)
-      //          .then(function (response)  {
-        //            return response.json()
-        //      })
-          //      .then(function (data) { 
+  
+    
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=" +apiKey)
+                .then(function (response)  {
+                    return response.json()
+              })
+                .then(function (data) { 
+                  console.log(data)
+                  cityname = data.name;
+                })
                     
   
   
@@ -94,6 +101,7 @@ function Historycal(ptag){
  })};
 
 function displayfutureData(){
+  
   currentDate = new Date();
   document.getElementById("display").innerHTML+= "<br>"+ cityname + "<br>" + futureHumidity+ "<br>" + futureWindspeed +"<br>" + currentDate;
 };
