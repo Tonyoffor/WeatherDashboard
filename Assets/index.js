@@ -12,7 +12,6 @@ var lon;
 var search_btn = document.getElementById("search_btn");
  document.getElementById("display").innerHTML =" ";
 
-
 // below is the function that is first activated to grab data from the website when the user searches
 function getApi(){
 
@@ -49,7 +48,7 @@ function getApi(){
     })
   
     // the fetch below is used to call the forcast data from opeanweather
-    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=" +apiKey)
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + fetchWeather(location) + "&appid=" +apiKey)
                 .then(function (response)  {
                     return response.json()
               })
@@ -59,6 +58,7 @@ function getApi(){
                  
                 })
     var futureConditon = document.createElement('p');
+    var currentConditon = document.createElement('p');
     futureConditon.innerHTML = "future conditons ";
     futureConditon.onclick = displayfutureData;
     document.getElementById("display").appendChild(currentConditon);
