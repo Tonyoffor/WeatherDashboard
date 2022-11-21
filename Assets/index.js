@@ -1,3 +1,4 @@
+// These are all the varibales
 var apiKey = 'ae15a36edcdc75c39fec6b795ef5ca98';
 var currentHumidity;
 var futureHumidity;
@@ -12,7 +13,7 @@ var search_btn = document.getElementById("search_btn");
  document.getElementById("display").innerHTML =" ";
 
 
-
+// below is the function that is first activated to grab data from the website when the user searches
 function getApi(){
 
 //we couldn't find the lat and lon so needed to use a different api call
@@ -22,6 +23,7 @@ function getApi(){
   var searchbar = document.getElementById('searchbar').value;
   var requestUrl="https://api.openweathermap.org/data/2.5/weather?q="+ searchbar +"&appid=" +apiKey;
   
+  // below is the fetch comand that creates and displays the current and future P tags 
     fetch(requestUrl)
     .then(function (response) {
       return response.json();
@@ -46,7 +48,7 @@ function getApi(){
        currentWindspeed = data.wind.speed;
     })
   
-    
+    // the fetch below is used to call the forcast data from opeanweather
     fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=" +apiKey)
                 .then(function (response)  {
                     return response.json()
@@ -54,27 +56,25 @@ function getApi(){
                 .then(function (data) { 
                   console.log(data)
                   cityname = data.name;
+                 
                 })
-                    
-  
-  
-
-   // var futureConditon = document.createElement('p');
- //   futureConditon.innerHTML = "future conditons ";
-  //  futureConditon.onclick = displayfutureData;
-    //document.getElementById("display").appendChild(currentConditon);
-    //document.getElementById("display").appendChild(futureConditon);
-  
+    var futureConditon = document.createElement('p');
+    futureConditon.innerHTML = "future conditons ";
+    futureConditon.onclick = displayfutureData;
+    document.getElementById("display").appendChild(currentConditon);
+    document.getElementById("display").appendChild(futureConditon);
   };
 
+  //this function shows the current data infromation
 function displayCurrentData(){
   currentDate = new Date();
   document.getElementById("display").innerHTML+= "<br>"+ cityname + "<br>" + currentHumidity+ "<br>" + currentWindspeed +"<br>" + currentDate;
 };
 
 
-//api.openweathermap.org/data/2.5/forecast?q= cityname &appid= apiKey
 
+
+//This function is called when a user want to see the weather conditons from their history 
 function Historycal(ptag){
   
   document.getElementById("display").innerHTML =" ";
@@ -106,6 +106,18 @@ function displayfutureData(){
   document.getElementById("display").innerHTML+= "<br>"+ cityname + "<br>" + futureHumidity+ "<br>" + futureWindspeed +"<br>" + currentDate;
 };
  
+function fetchCoords() {
+
+  var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityname +"&limit=5&appid=" +apiKey;
+}
+
+function fetchWeather(location) {
+
+  var lat  = location;
+  var lon  = location;
+  var city = location.name;
+  var apiUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" +lat +"&lon=" +lon +"&units=imperial&appid=" +apiKey;
+}
 
     //currentDate = new Date();
 //    console.log(data)
