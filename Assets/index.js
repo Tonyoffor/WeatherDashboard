@@ -48,7 +48,7 @@ function getApi(){
     })
   
     // the fetch below is used to call the forcast data from opeanweather
-    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + fetchWeather(location) + "&appid=" +apiKey)
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&appid=" +apiKey)
                 .then(function (response)  {
                     return response.json()
               })
@@ -94,21 +94,27 @@ function Historycal(ptag){
    
     var futureConditonBtn = document.createElement('button');
     futureConditonBtn.innerHTML = "future conditons ";
-    futureConditonBtn.onclick = displayfutureData;
+    futureConditonBtn.onclick = displayfutureData(cityname);
     document.getElementById("display").appendChild(currentConditonBtn);
        document.getElementById("display").appendChild(futureConditonBtn);
     
  })};
 
-function displayfutureData(){
-  
+function displayfutureData(cityname){
+  fetchCoords(cityname);
   currentDate = new Date();
   document.getElementById("display").innerHTML+= "<br>"+ cityname + "<br>" + futureHumidity+ "<br>" + futureWindspeed +"<br>" + currentDate;
+
 };
  
 function fetchCoords() {
 
   var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityname +"&limit=5&appid=" +apiKey;
+  fetch()
+  .then()
+  .then(
+    fetchWeather(location)
+  )
 }
 
 function fetchWeather(location) {
