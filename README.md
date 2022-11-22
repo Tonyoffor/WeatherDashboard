@@ -8,7 +8,9 @@ If the user picks the current then they will see the city name, the date, an ico
 
 if they click on the future then they should see a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 
+![Finalimg](./Assets/Img/Screen%20Shot%202022-11-21%20at%2011.21.45%20PM.png)
 
+GitHub Link: https://github.com/Tonyoffor/WeatherDashboard
 
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
+Deployed Link: https://tonyoffor.github.io/WeatherDashboard/
+
